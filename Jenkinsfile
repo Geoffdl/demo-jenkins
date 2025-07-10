@@ -10,7 +10,7 @@ pipeline {
         stage('Execute') {
             steps {
                 echo 'Executing Java Hello World application...'
-                sh 'java -cp target/classes fr.diginamic.Main'
+                sh 'mvn exec:java -Dexec.mainClass="fr.diginamic.Main"'
             }
         }
     }
