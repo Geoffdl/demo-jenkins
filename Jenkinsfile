@@ -10,9 +10,8 @@ pipeline {
         stage('Execute') {
             steps {
                 echo 'Executing Java Hello World application...'
-                sh 'java -cp target/classes fr.diginamic.demo.jenkins.Main'
+                sh 'java -cp target/classes fr.diginamic.Main'
             }
         }
     }
-
 }
