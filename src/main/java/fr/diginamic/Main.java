@@ -8,7 +8,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        String str = "LEEEERRRROOOOYYYY JEENNNNNNNNNNNNNKINSSS";
+        String str = "Leroy Jenkins";
         try
         {
             String art = FigletFont.convertOneLine(str);
