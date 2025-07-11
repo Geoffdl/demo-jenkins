@@ -16,8 +16,7 @@ pipeline {
                 sh 'mvn exec:java -Dexec.mainClass="fr.diginamic.Main"'
 
                 echo 'Test run w/o maven'
-                sh 'java -jar target/demo-jenkins-1.0-SNAPSHOT-jar-with-dependencies.jar
-'
+                sh 'java -jar target/demo-jenkins-1.0-SNAPSHOT-jar-with-dependencies.jar'
             }
         }
     }
