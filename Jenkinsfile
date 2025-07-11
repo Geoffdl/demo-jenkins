@@ -2,38 +2,38 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Build') {
+        stage('Git Clone Repo Back') {
             steps {
-                echo 'Building Java app'
-                sh 'mvn -B -DskipTests clean package'
+                dir('back-end') {
+                    git url: 'https://github.com/CDA-2025-Projet-Fil-Rouge/QualiAir.git'
+                }
             }
         }
 
-        stage('Execute in parallel') {
-
-            parallel {
-
-                stage("run with maven"){
-
-                    steps {
-                        echo 'Test run with maven'
-                        sh 'mvn exec:java -Dexec.mainClass="fr.diginamic.Main"'
-                    }
-
-                }
-
-                stage("run with jar"){
-
-                    steps {
-                        echo 'Test run w/o maven'
-                        sh 'java -jar target/demo-jenkins-1.0-SNAPSHOT-jar-with-dependencies.jar'
-                    }
-
-                }
-
+        stage('Compile with maven') {
+            steps {
+                sh 'cd back-end'
+                sh 'mvn clean package'
             }
-
         }
+
+
+
+
+
+
+
+
+
+        stage('Git Clone Repo front') {
+            steps {
+                dir('front-end') {
+                    git credentialsId: 'quali-air-front-token',
+                    url: 'https://github.com/CDA-2025-Projet-Fil-Rouge/QualiAir-Web.git',
+                    branch: 'master'
+                }
+            }
+        }
+
     }
 }
