@@ -17,8 +17,8 @@ pipeline {
                 stage("run with maven"){
 
                     steps {
-                        echo 'Test run w/o maven'
-                        sh 'java -jar target/demo-jenkins-1.0-SNAPSHOT-jar-with-dependencies.jar'
+                        echo 'Test run with maven'
+                        sh 'mvn exec:java -Dexec.mainClass="fr.diginamic.Main"'
                     }
 
                 }
