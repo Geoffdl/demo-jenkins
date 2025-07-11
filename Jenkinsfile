@@ -10,10 +10,11 @@ pipeline {
         }
         stage('Execute') {
             steps {
+
+
                 echo 'Executing Java app'
                 sh 'mvn exec:java -Dexec.mainClass="fr.diginamic.Main"'
-            }
-            steps {
+
                 echo 'Test run w/o maven'
                 sh 'java -jar demo-jenkins-1.0-SNAPSHOT-jar-with-dependencies.jar'
             }
